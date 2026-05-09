@@ -1,24 +1,23 @@
 import { Link } from "react-router-dom";
-import products from "../data";
 
 function Home() {
+  const products = [
+    { id: 1, name: "iPhone 15", price: "₹79,999" },
+    { id: 2, name: "Samsung S24", price: "₹69,999" },
+    { id: 3, name: "OnePlus 12", price: "₹59,999" },
+  ];
+
   return (
     <div style={styles.container}>
-      <h1>🛍 Product Store</h1>
+      <h1>🛍 Product List</h1>
 
       <div style={styles.grid}>
         {products.map((product) => (
-          <div
-            key={product.id}
-            style={styles.card}
-          >
+          <div key={product.id} style={styles.card}>
             <h2>{product.name}</h2>
+            <p>{product.price}</p>
 
-            <h3>{product.price}</h3>
-
-            <Link
-              to={`/product/${product.id}`}
-            >
+            <Link to={`/product/${product.id}`}>
               <button style={styles.button}>
                 View Details
               </button>
@@ -32,15 +31,15 @@ function Home() {
 
 const styles = {
   container: {
-    padding: "40px",
     textAlign: "center",
     fontFamily: "Arial",
+    padding: "40px",
   },
 
   grid: {
     display: "flex",
-    gap: "20px",
     justifyContent: "center",
+    gap: "20px",
     flexWrap: "wrap",
   },
 
@@ -48,7 +47,8 @@ const styles = {
     background: "#f4f4f4",
     padding: "20px",
     borderRadius: "15px",
-    width: "220px",
+    width: "200px",
+    boxShadow: "0 5px 10px rgba(0,0,0,0.1)",
   },
 
   button: {
